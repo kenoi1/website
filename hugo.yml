@@ -31,15 +31,15 @@ params:
     enabled: true
     title: kenoi
     subtitle: "math student @ UWaterloo <br /> I like music production, drawing, and KDE"
-    imageUrl: "/profile.jpg"
-    imageWidth: 1000
-    imageHeight: 350
-    imageTitle: "kenoi profile picture"
+    imageUrl: "/pfp.png"
+    imageWidth: 100
+    imageHeight: 100
+    imageTitle: "pfp"
     buttons:
       - name: blogs
         url: /blogs/
-      - name: tags
-        url: /tags/
+      - name: gallery
+        url: /gallery/
   # homeInfoParams:
   #   Title: "kenoi"
   #   Content: > 
@@ -62,14 +62,18 @@ params:
 
 menu:
   main:
-    - identifier: posts
-      name: posts
-      url: /posts/
+    - identifier: blogs
+      name: blogs
+      url: /blogs/
       weight: 10
+    - identifier: gallery
+      name: gallery
+      url: /gallery/
+      weight: 20
     - identifier: tags
       name: tags
       url: /tags/
-      weight: 20
+      weight: 30
 
 
 markup:
