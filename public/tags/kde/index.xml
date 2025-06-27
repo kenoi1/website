@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Kde on kenoi</title>
+    <link>http://localhost:1313/tags/kde/</link>
+    <description>Recent content in Kde on kenoi</description>
+    <generator>Hugo -- 0.147.9</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 18 May 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/kde/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>GSoC 2025 Project Intro: Developing Karton, the KDE Virtual Machine Manager!</title>
+      <link>http://localhost:1313/blogs/2025-05-18/</link>
+      <pubDate>Sun, 18 May 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blogs/2025-05-18/</guid>
+      <description>&lt;p&gt;Hi everyone!&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;m Derek Lin, also known as &lt;a href=&#34;https://invent.kde.org/kenoi&#34;&gt;kenoi&lt;/a&gt;. I&amp;rsquo;m a second-year student at the University of Waterloo and really excited to be working on developing &lt;a href=&#34;https://invent.kde.org/sitter/karton&#34;&gt;Karton&lt;/a&gt;, a virtual machine manager, this summer. This project will be a part of the Google Summer of Code (GSoC) 2025 program and mentored by &lt;a href=&#34;https://invent.kde.org/hsitter&#34;&gt;Harald Sitter&lt;/a&gt;, &lt;a href=&#34;https://invent.kde.org/tfella&#34;&gt;Tobias Fella&lt;/a&gt;, and &lt;a href=&#34;https://invent.kde.org/nicolasfella&#34;&gt;Nicolas Fella&lt;/a&gt;. Over the past few months, I&amp;rsquo;ve been contributing to the project through some merge requests and I hope to get it to a somewhat polished state towards the end of the program!&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

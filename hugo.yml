@@ -1,0 +1,80 @@
+baseURL: "https://kenoi.dev/"
+title: kenoi
+theme: hugo-PaperMod
+enableRobotsTXT: true
+buildDrafts: false
+buildFuture: false
+buildExpired: false
+
+pagination:
+  pagerSize: 5
+
+params:
+  env: production
+  title: kenoi
+  description: "Personal blog"
+  author: kenoi
+  DateFormat: "January 2, 2006"
+  defaultTheme: auto
+  disableThemeToggle: true
+  ShowReadingTime: true
+  ShowShareButtons: false
+  ShowPostNavLinks: true
+  ShowBreadCrumbs: false
+  ShowCodeCopyButtons: true
+  ShowWordCount: false
+  UseHugoToc: true
+  showtoc: false
+
+  # profile-mode
+  profileMode:
+    enabled: true
+    title: kenoi
+    subtitle: "math student @ UWaterloo <br /> I like music production, drawing, and KDE"
+    imageUrl: "/profile.jpg"
+    imageWidth: 1000
+    imageHeight: 350
+    imageTitle: "kenoi profile picture"
+    buttons:
+      - name: blogs
+        url: /blogs/
+      - name: tags
+        url: /tags/
+  # homeInfoParams:
+  #   Title: "kenoi"
+  #   Content: > 
+  #     hi, I'm Derek Lin! 
+  #     math student @ UWaterloo <br />
+  #     I like music, drawing!!!! <br />
+  #     KDE contributor - working on Karton, a virtual machine manager!
+
+  socialIcons:
+    - name: gitlab
+      url: "https://invent.kde.org/kenoi"
+    - name: github
+      url: "https://github.com/kenoi1"
+    - name: mastodon
+      url: "https://mastodon.social/@kenoi"
+    - name: youtube
+      url: "https://youtube.com/@kenoibun"
+    - name: discord
+      url: "https://discord.com/users/256191401140682754"
+
+menu:
+  main:
+    - identifier: posts
+      name: posts
+      url: /posts/
+      weight: 10
+    - identifier: tags
+      name: tags
+      url: /tags/
+      weight: 20
+
+
+markup:
+  highlight:
+    noClasses: false
+  goldmark:
+    renderer:
+      unsafe: true
