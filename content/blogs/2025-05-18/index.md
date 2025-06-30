@@ -6,15 +6,13 @@ authors:
 tags:
 - kde
 - codes
-# cover:
-#     image: "/kde.png"
-#     alt: "hmmhmm"
-#     caption: "Wow."
-#     relative: false
+cover:
+    image: "/konqi.png"
 
 SPDX-License-Identifier: CC-BY-SA-4.0
 SPDX-FileCopyrightText: 2025 Derek Lin <derekhongdalin@gmail.com>
 ---
+(This blog is originally posted to KDE Blogs.)
 
 Hi everyone! 
 
