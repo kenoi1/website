@@ -1,6 +1,6 @@
 ---
 title: "Digital Artwork"
-date: 2025-06-27
+date: 1100-01-01
 draft: false
 tags: []
 cover:

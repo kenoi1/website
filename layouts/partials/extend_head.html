@@ -1,0 +1,28 @@
+<style>
+.entry-link img,
+.post-cover img,
+article img:first-of-type {
+    max-height: 400px !important;
+    width: auto !important;
+    margin: 20px auto !important;
+    object-fit: cover !important;
+    border-radius: 8px !important;
+    display: block !important;
+}
+
+.entry-link,
+.post-cover {
+    margin: 20px 0 !important;
+    display: block !important;
+    text-align: center !important;
+}
+
+@media (max-width: 768px) {
+    .entry-link img,
+    .post-cover img,
+    article img:first-of-type {
+        max-height: 250px !important;
+        margin: 15px auto !important;
+    }
+}
+</style>
