@@ -3,6 +3,7 @@ title: "Karton GSoC 2025 Blog #2: VM Installer + work on Qt SPICE Client"
 date: "2025-06-30"
 authors:
  - kenoi
+draft: true
 tags:
 - kde
 - codes
