@@ -1,5 +1,5 @@
 ---
-title: "sketch"
+title: "sketches"
 date: 2025-01-01
 tags: []
 cover:
