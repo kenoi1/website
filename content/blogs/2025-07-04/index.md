@@ -37,8 +37,8 @@ One of the most confusing issues I encountered was when I was encountering weird
 Here are nice pictures from my adventures!
 
 <div style="text-align: center;">
-    <img src="https://kenoi.dev/blogs/2025-07-04/noice.png" width="250" height="250" style="display: inline-block;" />
-    <img src="https://kenoi.dev/blogs/2025-07-04/nnice.png" width="400" height="250" style="display: inline-block;" />
+    <img src="https://kenoi.dev/blogs/2025-07-04/noice.png" width="400" style="display: inline-block;" />
+    <img src="https://kenoi.dev/blogs/2025-07-04/nnice.png" width="500" style="display: inline-block;" />
 </div>
 
 *my first time properly seeing the display... (also in the wrong format)* ( •͈ ૦ •͈ )
