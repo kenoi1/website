@@ -9,7 +9,7 @@ tags:
 - codes
 cover:
     image: "/minekarton.png"
-    caption: "new logo for Karton! hmmmm wait a moment..."
+    caption: "new logo for Karton! hmmm wait a moment..."
 SPDX-License-Identifier: CC-BY-SA-4.0
 SPDX-FileCopyrightText: 2025 Derek Lin <derekhongdalin@gmail.com>
 ---
@@ -20,7 +20,7 @@ A few weeks have gone by since the official coding period for Google Summer of C
 
 ## VM Installer
 
-Earlier last month, I was finishing up addressing feedback (big thanks again to [Harald](https://invent.kde.org/sitter)!) on the [VM installer-related MR](https://invent.kde.org/sitter/karton/-/merge_requests/8). I had made some improvements to memory management, bug fixes related to detecting ISO disks, as well as refactoring of the class structures. I also ported it over to using [QML modules](https://api.kde.org/ecm/module/ECMQmlModule.html), which is much more commonly used in KDE apps, instead of exposing objects at runtime.
+Earlier last month, I was finishing up addressing feedback (big thanks again to [Harald](https://invent.kde.org/sitter)) on the [VM installer-related MR](https://invent.kde.org/sitter/karton/-/merge_requests/8). I had made some improvements to memory management, bug fixes related to detecting ISO disks, as well as refactoring of the class structures. I also ported it over to using [QML modules](https://api.kde.org/ecm/module/ECMQmlModule.html), which is much more commonly used in KDE apps, instead of exposing objects at runtime.
 
 After a bit more review, this has now been merged into the master branch! This was what was featured in the previous demo video and you can find a list of the full changes on the commit.
 
@@ -37,8 +37,8 @@ One of the most confusing issues I encountered was when I was encountering weird
 Here are nice pictures from my adventures!
 
 <div style="text-align: center;">
-    <img src="noice.png" width="250" height="250" style="display: inline-block;" />
-    <img src="nnice.png" width="400" height="250" style="display: inline-block;" />
+    <img src="https://kenoi.dev/blogs/2025-07-04/noice.png" width="250" height="250" style="display: inline-block;" />
+    <img src="https://kenoi.dev/blogs/2025-07-04/nnice.png" width="400" height="250" style="display: inline-block;" />
 </div>
 
 *my first time properly seeing the display... (also in the wrong format)* ( •͈ ૦ •͈ )
@@ -47,7 +47,7 @@ I have also set up forwarding controls which listens to Qt user input (mouse cli
 
 Once I polish this up, I hoping to merge this into master soon. It'll likely be very slow and barebones, but I'm hoping I can make more improvements later on!
 
-{{< video src="viewer.mp4" muted="true" loop="true" autoplay="true" >}}
+{{< video src="viewer.mp4" muted="true" loop="true" >}}
 
 *still very lagging scrolling, but now we can read [Pepper & Carrot](https://www.peppercarrot.com/)!*
 
