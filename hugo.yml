@@ -26,6 +26,8 @@ params:
   UseHugoToc: true
   showtoc: false
 
+  ShowFullTextinRSS: true
+  
   assets:
     favicon: "/favicon.png"
 
