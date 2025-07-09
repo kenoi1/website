@@ -47,7 +47,7 @@ I have also set up forwarding controls which listens to Qt user input (mouse cli
 
 Once I polish this up, I hoping to merge this into master soon. It'll likely be very slow and barebones, but I'm hoping I can make more improvements later on!
 
-{{< video src="viewer.mp4" muted="true" loop="true" >}}
+{{< video src="https://kenoi.dev/blogs/2025-07-04/viewer.mp4" muted="true" loop="true" >}}
 
 *still very lagging scrolling, but now we can read [Pepper & Carrot](https://www.peppercarrot.com/)!*
 
