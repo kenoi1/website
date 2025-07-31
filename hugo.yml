@@ -32,7 +32,7 @@ params:
   profileMode:
     enabled: true
     title: kenoi
-    subtitle: "Derek Lin, math student @ UWaterloo <br /> I like music production, drawing, and KDE"
+    subtitle: "Derek Lin <br /> math student @ UWaterloo <br /> I like music production, drawing, and KDE"
     imageUrl: "/60f.png"
     imageWidth: 100
     imageHeight: 100
