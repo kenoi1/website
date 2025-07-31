@@ -33,7 +33,7 @@ params:
     enabled: true
     title: kenoi
     subtitle: "math student @ UWaterloo <br /> I like music production, drawing, and KDE"
-    imageUrl: "/pfp.png"
+    imageUrl: "/60f.png"
     imageWidth: 100
     imageHeight: 100
     imageTitle: "pfp"
