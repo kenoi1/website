@@ -82,11 +82,18 @@ Later on, I added display frame resizing when the user resizes the Karton window
 
 ### UI
 
-My final major MR was to rework my UI to make better use of screen space. I moved the existing VM ListView into a sidebar displaying only name, state, and OS id. The right side would then have the detailed information of the selected VM. One my biggest inspirations was MacOS UTM's screenshot of the last active frame.
+My final major MR was to rework my UI to make better use of screen space. I moved the existing VM ListView into a sidebar displaying only name, state, and OS id. The right side would then have the detailed information of the selected VM. One my biggest inspirations was MacOS UTM's screenshot of the lastv active frame.
 
 When a user closes the Karton viewer window, the last frame is saved to `user/.local/state/KDE/Karton/previews`. Implementing cool features like these are much easier now that we have our own viewer! I also added some effects for opacity and hover animation to make it look nice.
 
 (macos utm, compare with Karton video hovering over screencap)
+
+ <div style="text-align: center;">
+    <img src="https://kenoi.dev/blogs/2025-08-23/manager.png" width="400" height="250" style="display: inline-block;" />
+    <img src="https://kenoi.dev/blogs/2025-08-23/utm.png" width="400" height="250" style="display: inline-block;" />
+</div>
+
+
 
 Finally, I worked on media disc ejection. This uses a libvirt call to simulate the installation media being removed from the VM, so users can boot into their virtual hard drive after installing. 
 
