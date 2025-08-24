@@ -13,7 +13,7 @@ SPDX-License-Identifier: CC-BY-SA-4.0
 SPDX-FileCopyrightText: 2025 Derek Lin <derekhongdalin@gmail.com>
 ---
 
-**This blog is still work in progress.**
+## ==This blog post is a draft and still being worked on until Sept. 1==
 
 Hello again everyone!
 
