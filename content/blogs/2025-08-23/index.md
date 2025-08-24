@@ -1,5 +1,5 @@
 ---
-title: "GSoC 2025 Final Project Blog: Developing Karton, the KDE Virtual Machine Manager!"
+title: "DRAFT: GSoC 2025 Final Project Blog: Developing Karton, the KDE Virtual Machine Manager!"
 date: "2025-08-23"
 authors:
  - kenoi
@@ -12,6 +12,8 @@ cover:
 SPDX-License-Identifier: CC-BY-SA-4.0
 SPDX-FileCopyrightText: 2025 Derek Lin <derekhongdalin@gmail.com>
 ---
+
+**This blog is still work in progress.**
 
 Hello again everyone!
 
@@ -106,20 +108,36 @@ Working through MRs has given me a lot of valuable and relevant industry experie
 As a final test of the project, I decided to configure, configure and use a Fedora KDE VM using Karton. After specifying specs, I installed it to the virtual disk, ejected the installation media, and properly booted into it. Then, I tried playing some games. Overall, it worked pretty well!
 
 ## List of MRs
-Major changes:
-Subtle changes:
+
+#### Major changes:
+
+- [#4 Complete rewrite with libvirt backend, new UI](https://invent.kde.org/sitter/karton/-/merge_requests/4)
+- [#6 Implement disk path and proper deletion button behavior](https://invent.kde.org/sitter/karton/-/merge_requests/6)
+- [#8 VM creation through libvirt domain xml format](https://invent.kde.org/sitter/karton/-/merge_requests/8)
+- [#15 Custom Qt SPICE client and viewer](https://invent.kde.org/sitter/karton/-/merge_requests/15)
+- [#25 Revamp UI with sidebar and VM preview screencap](https://invent.kde.org/sitter/karton/-/merge_requests/25)
+- [#26 Implement eject ISO disk button](https://invent.kde.org/sitter/karton/-/merge_requests/26)
+
+#### Subtle changes:
+- [#10 Update stop VM button icon](https://invent.kde.org/sitter/karton/-/merge_requests/10)
+- [#14 Store XML path of ~/.config/libvirt/qemu
+](https://invent.kde.org/sitter/karton/-/merge_requests/14)
+- [#17 Fix fullscreen button anchor margin](https://invent.kde.org/sitter/karton/-/merge_requests/17)
+- [#22 Extract installation dialog into a new class](https://invent.kde.org/sitter/karton/-/merge_requests/22)
+- [#23 Error notification/prevention for empty installation fields](https://invent.kde.org/sitter/karton/-/merge_requests/23)
+- [#24 List OS variants through searchable combo box](https://invent.kde.org/sitter/karton/-/merge_requests/24)
 
 ## Difficulties
 
 My biggest regret was having a study term over this period. There were times I had a lot of trouble managing my time, balancing studying, searching for job positions, and contributing. Though it's been an exhausting school term, I am still super glad to have been able to contribute to a really cool project and get something work!
 
-I was also quite new to both C++ and Qt development. Funny enough, I had been taking, and struggling on, my first course in C++ while working on it. I also spent a lot of time reading documentation to familiarize myself with a lot of the different APIs (libspice, libvirt, libosinfo.
+I was also quite new to both C++ and Qt development. Funny enough, I had been taking, and struggling on, my first course in C++ while working on Karton. I also spent a lot of time reading documentation to familiarize myself with a lot of the different APIs (libspice, libvirt, and libosinfo)
 
 ## What's Next?
 
-Currently, I am on vacation and I will be attending Akademy in Berlin in September so there won't be too much done until then. In the fall, I will be finally off school for a 4 month internship (yay!!). I'm hoping I will have more time to contribute again.
+There is still so much to do! Currently, I am on vacation and I will be attending Akademy in Berlin in September so I won't be able to work much until then. In the fall, I will be finally off school for a 4 month internship (yay!!). I'm hoping I will have more time to contribute again.
 
-There's still a lot to done especially with regards to the viewer. 
+There's still a lot left especially with regards to the viewer. 
 
 Here's a bit of an unorganized list:
 * Optimize VM display frame buffer with SPICE `gl-scanout`
@@ -132,10 +150,9 @@ Here's a bit of an unorganized list:
 
 ## Release?
 
-In its current state, I am not comfortable officially packaging and releasing Karton. There have been a lot of new and moving parts throughout this coding period, and I'd like to have the chance to thorough test the code to prevent any major issues.
+In its current state, Karton is not feature complete, and not ready for officially packaging and releasing. In addition to the missing features listed before, there have been a lot of new and moving parts throughout this coding period, and I'd like to have the chance to thorough test the code to prevent any major issues.
 
-However, I do encourage you to try it out (at your own risk!) by cloning the repo. Let me know what you think and if you find any issues!
+However, I do encourage you to try it out (at your own risk!) by cloning the repo. Let me know what you think and when you find any issues!
 
-In other news, there are some discussions of packaging Karton as a flatpak and I hope to have it added to the KDE namespace soon, so stay tuned!
-
+In other news, there are some discussions of packaging Karton as a Flatpak eventually and I will be requesting to add it to the KDE namespace in the coming months, so stay tuned!
 
