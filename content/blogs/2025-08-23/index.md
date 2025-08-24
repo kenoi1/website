@@ -4,7 +4,6 @@ date: "2025-08-23"
 authors:
  - kenoi
 tags:
-- kde
 - codes
 cover:
     image: "/konqi.png"
