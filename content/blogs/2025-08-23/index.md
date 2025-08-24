@@ -23,7 +23,6 @@ Through Google Summer of Code (GSoC), mentored by [Harald Sitter](https://invent
 
 As the program wraps up, I thought it would be a good idea to put together what I've been able to accomplish as well as my plans going forward.
 
-(Final pic multiple displays and ui)
 <img src="https://kenoi.dev/blogs/2025-08-23/karton.png" width="400" style="display: inline-block;" />
 
 ## Research and Initial Work
@@ -48,8 +47,6 @@ VM information in Karton is parsed explicitly from the saved libvirt XML file fo
 
 All in all, this addition completely removed the virt-install dependency although barebones.
 
- ( gif of iantalltion page, and typing complete
-
  <img src="https://kenoi.dev/blogs/2025-08-23/install.png" width="400" style="display: inline-block;" />
  
  The smooth and easy VM installation process of GNOME Boxes had been an inspiration for me and I'd like to improve it in the future by adding a media installer and better error handling later on.
@@ -67,7 +64,6 @@ As such, the bulk of my time was spent working with SPICE directly in order to c
 I had configured all Karton-created VMs to be set to autoport for graphics which dynamically assigns a port at runtime. Consequently, I needed to use a CLI tool (virsh domdisplay) to fetch the SPICE URI to establish the initial connection.
 
 The viewer display works through a frame buffer. You can read more about the blog
-(image of cursed)
 
 <div style="text-align: center;">
     <img src="https://kenoi.dev/blogs/2025-07-04/noice.png" width="400" style="display: inline-block;" />
