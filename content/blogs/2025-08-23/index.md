@@ -42,9 +42,9 @@ You can read more about it in my [project introduction blog]()!
 
 One of my goals for the project was to develop a custom libvirt domain XML generator using Qt libraries and the `libosinfo` GLib API. I started working on the feature in advance in April and was able to have it ready for review before the official GSoC coding period.
 
-I created a dialogue menu to accept a VM name, installation media, storage, and RAM. libosinfo will attempt to identify the file and return a OS short-ID, otherwise users will need to select one from the displayed list.
+I created a dialogue menu to accept a VM name, installation media, storage, allocated RAM, and CPUs. libosinfo will attempt to identify the file and return a OS short-ID (ex: fedora40, ubuntu24.04, etc), otherwise users will need to select one from the displayed list.
 
-Through the OS ID, libosinfo calls provide certain specifications needed in the libvirt domain XML. Karton then fills in the rest, generating UUID, random MAC address, and configuring devices and ports. The XML file is assembled through QDomDocument and passed into a libvirt call that verifies and adds the VM. 
+Through the OS ID, libosinfo can provide certain specifications needed in the libvirt domain XML. Karton then fills in the rest, generating a UUID, a MAC address, and configuring devices and ports. The XML file is assembled through QDomDocument and passed into a libvirt call that verifies it before adding the VM.
 
 VM information in Karton is parsed explicitly from the saved libvirt XML file found in the libvirt QEMU folder.
 
@@ -52,7 +52,7 @@ All in all, this addition completely removed the virt-install dependency althoug
 
  <img src="https://kenoi.dev/blogs/2025-08-23/installationdialog.png" width="400" style="display: inline-block;" />
 
- *A screenshot of the VM installation 
+ *A screenshot of the VM installation dialog*
  
  The smooth and easy VM installation process of GNOME Boxes had been an inspiration for me and I'd like to improve it in the future by adding a media installer and better error handling later on.
  
@@ -63,6 +63,10 @@ A few weeks into the official coding period, I had been addressing feedback and 
 ### SPICE Client and Viewer
 
 My use of `virt-viewer` previously was meant as a temporary addition, being poorly integrated in Qt/Kirigami and lacks needed customizability. 
+
+ <img src="https://kenoi.dev/blogs/2025-08-23/virtviewer.png" width="400" style="display: inline-block;" />
+
+ *Previously, clicking the `view` button would open a virtviewer window*
 
 As such, the bulk of my time was spent working with SPICE directly in order to create a custom Qt SPICE client and viewer. This needed to manage the state of connection to VM displays and render them to KDE-native windows. Other features such as input forwarding, audio receiving also needed to be implemented. 
 
