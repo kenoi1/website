@@ -24,6 +24,8 @@ As the program wraps up, I thought it would be a good idea to put together what 
 
 <img src="https://kenoi.dev/blogs/2025-08-23/karton.png" width="400" style="display: inline-block;" />
 
+*A final look at Karton after the GSoC period.*
+
 ## Research and Initial Work
 
 The main motivation behind Karton is to provide KDE users with a more Qt-native alternative to GTK-based virtual machine managers, as well as an easy-to-use experience.
@@ -33,6 +35,8 @@ I had first expressed interest in working on Karton in early Feburary where I ma
 You can read more about it in my [project introduction blog]()!
 
 <img src="https://kenoi.dev/blogs/2025-08-23/list.png" width="400" style="display: inline-block;" />
+
+*A screenshot of my rewrite in March 8, 2025.*
 
 ### VM Installation
 
@@ -46,7 +50,9 @@ VM information in Karton is parsed explicitly from the saved libvirt XML file fo
 
 All in all, this addition completely removed the virt-install dependency although barebones.
 
- <img src="https://kenoi.dev/blogs/2025-08-23/install.png" width="400" style="display: inline-block;" />
+ <img src="https://kenoi.dev/blogs/2025-08-23/installationdialog.png" width="400" style="display: inline-block;" />
+
+ *A screenshot of the VM installation 
  
  The smooth and easy VM installation process of GNOME Boxes had been an inspiration for me and I'd like to improve it in the future by adding a media installer and better error handling later on.
  
