@@ -18,7 +18,7 @@ Hello again everyone!
 
  I'm Derek Lin also known as [kenoi](https://invent.kde.org/kenoi), a second-year Math student and the University of Waterloo.
 
-Through Google Summer of Code (GSoC), mentored by [Harald Sitter](https://invent.kde.org/hsitter), [Tobias Fella](https://invent.kde.org/tfella), and [Nicolas Fella](https://invent.kde.org/nicolasfella), I have been developing Karton, a KDE-native Virtual Machine Manager.
+Through Google Summer of Code 2025 (GSoC), mentored by [Harald Sitter](https://invent.kde.org/hsitter), [Tobias Fella](https://invent.kde.org/tfella), and [Nicolas Fella](https://invent.kde.org/nicolasfella), I have been developing Karton, a virtual machine manager for KDE.
 
 As the program wraps up, I thought it would be a good idea to put together what I've been able to accomplish as well as my plans going forward.
 
@@ -44,7 +44,7 @@ One of my goals for the project was to develop a custom libvirt domain XML gener
 
 I created a dialogue menu to accept a VM name, installation media, storage, allocated RAM, and CPUs. libosinfo will attempt to identify the file and return a OS short-ID (ex: fedora40, ubuntu24.04, etc), otherwise users will need to select one from the displayed list.
 
-Through the OS ID, libosinfo can provide certain specifications needed in the libvirt domain XML. Karton then fills in the rest, generating a UUID, a MAC address, and configuring devices and ports. The XML file is assembled through QDomDocument and passed into a libvirt call that verifies it before adding the VM.
+Through the OS ID, libosinfo can provide certain specifications needed in the libvirt domain XML. Karton then fills in the rest, generating a UUID, a MAC address to configure a virtual network, and sets up display, audio, and storage devices. The XML file is assembled through QDomDocument and passed into a libvirt call that verifies it before adding the VM.
 
 VM information in Karton is parsed explicitly from the saved libvirt XML file found in the libvirt QEMU folder.
 
@@ -52,9 +52,9 @@ All in all, this addition completely removed the virt-install dependency althoug
 
  <img src="https://kenoi.dev/blogs/2025-08-23/installationdialog.png" width="400" style="display: inline-block;" />
 
- *A screenshot of the VM installation dialog*
+ *A screenshot of the VM installation dialog.*
  
- The smooth and easy VM installation process of GNOME Boxes had been an inspiration for me and I'd like to improve it in the future by adding a media installer and better error handling later on.
+ The easy VM installation process of GNOME Boxes had been an inspiration for me and I'd like to improve it in the future by adding a media installer and better error handling later on.
  
 ## Official Coding Begins!
 
@@ -62,26 +62,31 @@ A few weeks into the official coding period, I had been addressing feedback and 
 
 ### SPICE Client and Viewer
 
-My use of `virt-viewer` previously was meant as a temporary addition, being poorly integrated in Qt/Kirigami and lacks needed customizability. 
+My use of `virt-viewer` previously for interacting with virtual machines was meant as a temporary addition, as it is a separate application and is poorly integrated into Qt/Kirigami and lacks needed customizability. 
 
  <img src="https://kenoi.dev/blogs/2025-08-23/virtviewer.png" width="400" style="display: inline-block;" />
 
- *Previously, clicking the `view` button would open a virtviewer window*
+ *Previously, clicking the `view` button would open a `virtviewer` window.*
 
-As such, the bulk of my time was spent working with SPICE directly in order to create a custom Qt SPICE client and viewer. This needed to manage the state of connection to VM displays and render them to KDE-native windows. Other features such as input forwarding, audio receiving also needed to be implemented. 
+As such, the bulk of my time was spent working with SPICE directly, using the `spice-client-glib` library, in order to create a custom Qt SPICE client and viewer. This needed to manage the state of connection to VM displays and render them to KDE-native windows. Other features such as input forwarding, audio receiving also needed to be implemented. 
 
-I had configured all Karton-created VMs to be set to autoport for graphics which dynamically assigns a port at runtime. Consequently, I needed to use a CLI tool (virsh domdisplay) to fetch the SPICE URI to establish the initial connection.
+I had configured all Karton-created VMs to be set to autoport for graphics which dynamically assigns a port at runtime. Consequently, I needed to use a CLI tool , `virsh domdisplay`, to fetch the SPICE URI to establish the initial connection.
 
-The viewer display works through a frame buffer. You can read more about the blog
+The viewer display works through a frame buffer. The approach I took was rendering the pixel array I received to a QImage which could be drawn onto a QQuickItem to be displayed on the window. To know when to update, it listens to the SPICE primary display callback.
+
+You can read more about it in my [Qt SPICE Client blog](). As noted, this approach is quite inefficient as it needs to create a new QImage for every frame. I plan on improving this in the future.
 
 <div style="text-align: center;">
     <img src="https://kenoi.dev/blogs/2025-07-04/noice.png" width="400" style="display: inline-block;" />
     <img src="https://kenoi.dev/blogs/2025-07-04/nnice.png" width="500" style="display: inline-block;" />
 </div>
 
-I had to manage receiving and forwarding Qt input. Sending QMouseEvents, mouse button clicks, were straightforward and can be mapped directly to SPICE protocol mouse messages when activated. Keystrokes are taken in as QKeyEvents and the recieved scancodes, in evdev, are converted on the PC XT for SPICE through a map generated by QEMU. Implementing scroll and drag followed similarly. 
+*Screenshots of my struggles getting the display to work properly.*
 
-I also needed manage receiving audio streams from a SPICE callback, writing to a QAudioSink. One thing I found nice is how my approach supported multiple SPICE connections quite nicely. For example, opening multiple VMs will create separate audio sources for each so users can modify volume levels accordingly.
+
+I had to manage receiving and forwarding Qt input. Sending QMouseEvents, mouse button clicks, were straightforward and can be mapped directly to SPICE protocol mouse messages when activated. Keystrokes are taken in as QKeyEvents and the received scancodes, in `evdev`, are converted to `PC XT` for SPICE through a map generated by QEMU. Implementing scroll and drag followed similarly. 
+
+I also needed manage receiving audio streams from the SPICE playback callback, writing to a QAudioSink. One thing I found nice is how my approach supported multiple SPICE connections quite nicely. For example, opening multiple VMs will create separate audio sources for each so users can modify volume levels accordingly.
 
 Later on, I added display frame resizing when the user resizes the Karton window as well as a fullscreen button. I noticed that doing so still causes resolution to appear quite bad, so proper resizing done through the guest machine will have to be implemented in the future.
 
@@ -89,32 +94,23 @@ Later on, I added display frame resizing when the user resizes the Karton window
 
 ### UI
 
-My final major MR was to rework my UI to make better use of screen space. I moved the existing VM ListView into a sidebar displaying only name, state, and OS id. The right side would then have the detailed information of the selected VM. One my biggest inspirations was MacOS UTM's screenshot of the lastv active frame.
+My final major MR was to rework my UI to make better use of screen space. I moved the existing VM ListView into a sidebar displaying only name, state, and OS ID. The right side would then have the detailed information of the selected VM. One my biggest inspirations was MacOS UTM's screenshot of the last active frame.
 
-When a user closes the Karton viewer window, the last frame is saved to `user/.local/state/KDE/Karton/previews`. Implementing cool features like these are much easier now that we have our own viewer! I also added some effects for opacity and hover animation to make it look nice.
+When a user closes the Karton viewer window, the last frame is saved to `$HOME/.local/state/KDE/Karton/previews`. Implementing cool features like these are much easier now that we have our own viewer! I also added some effects for opacity and hover animation to make it look nice.
 
-(macos utm, compare with Karton video hovering over screencap)
-
- <div style="text-align: center;">
-    <img src="https://kenoi.dev/blogs/2025-08-23/manager.png" width="400" height="250" style="display: inline-block;" />
-    <img src="https://kenoi.dev/blogs/2025-08-23/utm.png" width="400" height="250" style="display: inline-block;" />
-</div>
-
-
+<img src="https://kenoi.dev/blogs/2025-08-23/manager.png" width="400" style="display: inline-block;" />
 
 Finally, I worked on media disc ejection. This uses a libvirt call to simulate the installation media being removed from the VM, so users can boot into their virtual hard drive after installing. 
 
-Working through MRs has given me a lot of valuable and relevant industry experience going forward. A big thank you to Harald Sitter who has been reviewing and providing feedback along the way!
-
-## Basic Feature Overview
-
-## Demonstration
+## Usage
 
 As a final test of the project, I decided to configure, configure and use a Fedora KDE VM using Karton. After specifying specs, I installed it to the virtual disk, ejected the installation media, and properly booted into it. Then, I tried playing some games. Overall, it worked pretty well!
 
+(video)
+
 ## List of MRs
 
-#### Major changes:
+#### Major Additions:
 
 - [#4 Complete rewrite with libvirt backend, new UI](https://invent.kde.org/sitter/karton/-/merge_requests/4)
 - [#6 Implement disk path and proper deletion button behavior](https://invent.kde.org/sitter/karton/-/merge_requests/6)
@@ -123,7 +119,7 @@ As a final test of the project, I decided to configure, configure and use a Fedo
 - [#25 Revamp UI with sidebar and VM preview screencap](https://invent.kde.org/sitter/karton/-/merge_requests/25)
 - [#26 Implement eject ISO disk button](https://invent.kde.org/sitter/karton/-/merge_requests/26)
 
-#### Subtle changes:
+#### Subtle Additions:
 - [#10 Update stop VM button icon](https://invent.kde.org/sitter/karton/-/merge_requests/10)
 - [#14 Store XML path of ~/.config/libvirt/qemu
 ](https://invent.kde.org/sitter/karton/-/merge_requests/14)
@@ -136,7 +132,7 @@ As a final test of the project, I decided to configure, configure and use a Fedo
 
 My biggest regret was having a study term over this period. There were times I had a lot of trouble managing my time, balancing studying, searching for job positions, and contributing. Though it's been an exhausting school term, I am still super glad to have been able to contribute to a really cool project and get something work!
 
-I was also quite new to both C++ and Qt development. Funny enough, I had been taking, and struggling on, my first course in C++ while working on Karton. I also spent a lot of time reading documentation to familiarize myself with a lot of the different APIs (libspice, libvirt, and libosinfo)
+I was also quite new to both C++ and Qt development. Funny enough, I had been taking, and struggling on, my first course in C++ while working on Karton. I also spent a lot of time reading documentation to familiarize myself with a lot of the different APIs (libspice, libvirt, and libosinfo).
 
 ## What's Next?
 
@@ -151,7 +147,7 @@ Here's a bit of an unorganized list:
 * Full VM snapshotting through libvirt (full duplication)
 * Browse and installation tool for commonly installed ISOs through QEMU
 * Error handling in installation process
-* Configuration of existing VMs
+* Configuration of existing VMs in the application
 
 ## Release?
 
@@ -161,3 +157,24 @@ However, I do encourage you to try it out (at your own risk!) by cloning the rep
 
 In other news, there are some discussions of packaging Karton as a Flatpak eventually and I will be requesting to add it to the KDE namespace in the coming months, so stay tuned!
 
+## Conclusion
+
+Overall, it has been an amazing experience completing GSoC under KDE and I really recommend it for anyone who is looking to contribute to open-source.
+
+Working through MRs has given me a lot of valuable and relevant industry experience going forward. A big thank you to my mentor, [Harald Sitter](), who has been reviewing and providing feedback along the way!
+
+As mentioned earlier, Karton still definitely has a lot to work on and I plan continuing my work after GSoC as well. If you'd like to read more about my work on the project in the future, please check out [my personal blog]()! 
+
+Thanks for reading!
+
+Website: kenoi.dev
+
+Mastodon: mastodon.social/@kenoi
+
+GitLab: https://invent.kde.org/kenoi
+
+GitHub:
+
+Matrix: @kenoi:matrix.org
+
+Discord: kenyoy
