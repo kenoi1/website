@@ -46,8 +46,6 @@ One of my goals for the project was to develop a custom [libvirt domain XML](htt
 
 I created a dialogue menu to accept a VM name, installation media, storage, allocated RAM, and CPUs. libosinfo will attempt to identify the file and return a OS short-ID (ex: fedora40, ubuntu24.04, etc), otherwise users will need to select one from the displayed list.
 
-<img src="https://kenoi.dev/blogs/2025-08-23/memory.png" width="400" style="display: inline-block;" />
-
 Through the OS ID, libosinfo can provide certain specifications needed in the libvirt domain XML. Karton then fills in the rest, generating a UUID, a MAC address to configure a [virtual network](https://libvirt.org/formatdomain.html#network-interfaces), and sets up display, audio, and storage devices. The XML file is assembled through QDomDocument and passed into a libvirt call that verifies it before adding the VM.
 
 VM information in Karton is parsed explicitly from the saved libvirt XML file found in the libvirt QEMU folder, `~/.config/libvirt/qemu/{domain_name}.xml`.
@@ -100,7 +98,7 @@ Later on, I added display frame resizing when the user resizes the Karton window
 
 My final major MR was to rework my UI to make better use of screen space. I moved the existing VM ListView into a sidebar displaying only name, state, and OS ID. The right side would then have the detailed information of the selected VM. One my inspirations was MacOS UTM's screenshot of the last active frame.
 
-<img src="https://kenoi.dev/blogs/2025-08-23/qtd.png" width="400" style="display: inline-block;" />
+<img style="text-align: center;" src="https://kenoi.dev/blogs/2025-08-23/qtd.png" width="400" style="display: inline-block;" />
 
 When a user closes the Karton viewer window, the last frame is saved to `$HOME/.local/state/KDE/Karton/previews`. Implementing cool features like these are much easier now that we have our own viewer! I also added some effects for opacity and hover animation to make it look nice.
 
@@ -139,6 +137,9 @@ As a final test of the project, I decided to configure, configure and use a Fedo
 My biggest regret was having a study term over this period. There were times I had a lot of trouble managing my time, balancing studying, searching for job positions, and contributing. Though it's been an exhausting school term, I am still super glad to have been able to contribute to a really cool project and get something work!
 
 I was also quite new to both C++ and Qt development. Funny enough, I had been taking, and struggling on, my first course in C++ while working on Karton. I also spent a lot of time reading documentation to familiarize myself with a lot of the different APIs (libspice, libvirt, and libosinfo).
+
+<img style="text-align: center;" src="https://kenoi.dev/blogs/2025-08-23/memory.png" width="200" style="display: inline-block;" />
+
 
 ## What's Next?
 
