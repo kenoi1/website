@@ -16,39 +16,41 @@ SPDX-FileCopyrightText: 2025 Derek Lin <derekhongdalin@gmail.com>
 
 Hello again everyone!
 
- I'm Derek Lin also known as [kenoi](https://invent.kde.org/kenoi), a second-year Math student and the University of Waterloo.
+ I'm Derek Lin also known as [kenoi](https://invent.kde.org/kenoi), a second-year Math student at the University of Waterloo.
 
-Through Google Summer of Code 2025 (GSoC), mentored by [Harald Sitter](https://invent.kde.org/hsitter), [Tobias Fella](https://invent.kde.org/tfella), and [Nicolas Fella](https://invent.kde.org/nicolasfella), I have been developing Karton, a virtual machine manager for KDE.
+<img src="https://kenoi.dev/blogs/2025-08-23/konqi.png" width="400" style="display: inline-block;" />
+
+Through [Google Summer of Code 2025 (GSoC)](https://summerofcode.withgoogle.com/programs/2025/projects/phUCjPUf), mentored by [Harald Sitter](https://invent.kde.org/hsitter), [Tobias Fella](https://invent.kde.org/tfella), and [Nicolas Fella](https://invent.kde.org/nicolasfella), I have been developing [Karton](https://invent.kde.org/sitter/karton), a virtual machine manager for KDE.
 
 As the program wraps up, I thought it would be a good idea to put together what I've been able to accomplish as well as my plans going forward.
 
 <img src="https://kenoi.dev/blogs/2025-08-23/karton.png" width="400" style="display: inline-block;" />
 
-*A final look at Karton after the GSoC period.*
+*A final look at [Karton](https://invent.kde.org/sitter/karton/) after the GSoC period.*
 
 ## Research and Initial Work
 
 The main motivation behind Karton is to provide KDE users with a more Qt-native alternative to GTK-based virtual machine managers, as well as an easy-to-use experience.
 
-I had first expressed interest in working on Karton in early Feburary where I made the initial full rewrite, using libvirt and a new UI, wrapping `virt-install`and `virt-viewer` CLIs. During this time, I had been doing research, writing a proposal, and trying out different virtual machine managers like GNOME Boxes, virtmanager, and UTM.
+I had first expressed interest in working on Karton in early Feburary where I made the initial full rewrite ([see MR #4](https://invent.kde.org/sitter/karton/-/merge_requests/4)), using [libvirt](https://libvirt.org/) and a new UI, wrapping [virt-install](https://linux.die.net/man/1/virt-install) and [virt-viewer](https://linux.die.net/man/1/virt-viewer) CLIs. During this time, I had been doing research, writing a proposal, and trying out different virtual machine managers like [GNOME Boxes](https://apps.gnome.org/Boxes/), [virtmanager](https://virt-manager.org/), and [UTM](https://mac.getutm.app/).
 
-You can read more about it in my [project introduction blog]()!
+You can read more about it in my [project introduction blog](https://blogs.kde.org/2025/05/18/gsoc-2025-project-intro-developing-karton-the-kde-virtual-machine-manager/)!
 
 <img src="https://kenoi.dev/blogs/2025-08-23/list.png" width="400" style="display: inline-block;" />
 
-*A screenshot of my rewrite in March 8, 2025.*
+*A screenshot of my [rewrite](https://invent.kde.org/sitter/karton/-/merge_requests/4) in March 8, 2025.*
 
 ### VM Installation
 
-One of my goals for the project was to develop a custom libvirt domain XML generator using Qt libraries and the `libosinfo` GLib API. I started working on the feature in advance in April and was able to have it ready for review before the official GSoC coding period.
+One of my goals for the project was to develop a custom [libvirt domain XML](https://libvirt.org/formatdomain.html) generator using Qt libraries and the [libosinfo](https://libosinfo.org/) GLib API. I started [working on the feature](https://invent.kde.org/sitter/karton/-/merge_requests/8) in advance in April and was able to have it ready for review before the official GSoC coding period.
 
 I created a dialogue menu to accept a VM name, installation media, storage, allocated RAM, and CPUs. libosinfo will attempt to identify the file and return a OS short-ID (ex: fedora40, ubuntu24.04, etc), otherwise users will need to select one from the displayed list.
 
-Through the OS ID, libosinfo can provide certain specifications needed in the libvirt domain XML. Karton then fills in the rest, generating a UUID, a MAC address to configure a virtual network, and sets up display, audio, and storage devices. The XML file is assembled through QDomDocument and passed into a libvirt call that verifies it before adding the VM.
+Through the OS ID, libosinfo can provide certain specifications needed in the libvirt domain XML. Karton then fills in the rest, generating a UUID, a MAC address to configure a [virtual network](https://libvirt.org/formatdomain.html#network-interfaces), and sets up display, audio, and storage devices. The XML file is assembled through QDomDocument and passed into a libvirt call that verifies it before adding the VM.
 
-VM information in Karton is parsed explicitly from the saved libvirt XML file found in the libvirt QEMU folder.
+VM information in Karton is parsed explicitly from the saved libvirt XML file found in the libvirt QEMU folder, `~/.config/libvirt/qemu/{domain_name}.xml`.
 
-All in all, this addition completely removed the virt-install dependency although barebones.
+All in all, this addition ([see MR #8](https://invent.kde.org/sitter/karton/-/merge_requests/8)) completely removed the virt-install dependency although barebones.
 
  <img src="https://kenoi.dev/blogs/2025-08-23/installationdialog.png" width="400" style="display: inline-block;" />
 
@@ -68,13 +70,13 @@ My use of `virt-viewer` previously for interacting with virtual machines was mea
 
  *Previously, clicking the `view` button would open a `virtviewer` window.*
 
-As such, the bulk of my time was spent working with SPICE directly, using the `spice-client-glib` library, in order to create a custom Qt SPICE client and viewer. This needed to manage the state of connection to VM displays and render them to KDE-native windows. Other features such as input forwarding, audio receiving also needed to be implemented. 
+As such, the bulk of my time was spent working with [SPICE](https://www.spice-space.org/index.html) directly, using the `spice-client-glib` library, in order to create a custom Qt SPICE client and viewer ([see MR #15](https://invent.kde.org/sitter/karton/-/merge_requests/15)). This needed to manage the state of connection to VM displays and render them to KDE (Kirigami) windows. Other features such as input forwarding, audio receiving also needed to be implemented. 
 
-I had configured all Karton-created VMs to be set to autoport for graphics which dynamically assigns a port at runtime. Consequently, I needed to use a CLI tool , `virsh domdisplay`, to fetch the SPICE URI to establish the initial connection.
+I had configured all Karton-created VMs to be set to [autoport for graphics](https://libvirt.org/formatdomain.html#id75) which dynamically assigns a port at runtime. Consequently, I needed to use a CLI tool , `virsh domdisplay`, to fetch the SPICE URI to establish the initial connection.
 
 The viewer display works through a frame buffer. The approach I took was rendering the pixel array I received to a QImage which could be drawn onto a QQuickItem to be displayed on the window. To know when to update, it listens to the SPICE primary display callback.
 
-You can read more about it in my [Qt SPICE Client blog](). As noted, this approach is quite inefficient as it needs to create a new QImage for every frame. I plan on improving this in the future.
+You can read more about it in my [Qt SPICE client blog](https://blogs.kde.org/2025/07/10/karton-gsoc-2025-blog-%232-qt-spice-client/). As noted, this approach is quite inefficient as it needs to create a new QImage for every frame. I plan on improving this in the future.
 
 <div style="text-align: center;">
     <img src="https://kenoi.dev/blogs/2025-07-04/noice.png" width="400" style="display: inline-block;" />
@@ -84,7 +86,7 @@ You can read more about it in my [Qt SPICE Client blog](). As noted, this approa
 *Screenshots of my struggles getting the display to work properly.*
 
 
-I had to manage receiving and forwarding Qt input. Sending QMouseEvents, mouse button clicks, were straightforward and can be mapped directly to SPICE protocol mouse messages when activated. Keystrokes are taken in as QKeyEvents and the received scancodes, in `evdev`, are converted to `PC XT` for SPICE through a map generated by QEMU. Implementing scroll and drag followed similarly. 
+I had to manage receiving and forwarding Qt input. Sending QMouseEvents, mouse button clicks, were straightforward and can be mapped directly to [SPICE protocol](https://www.spice-space.org/spice-protocol.html) mouse messages when activated. Keystrokes are taken in as QKeyEvents and the received scancodes, in `evdev`, are converted to `PC XT` for SPICE through a [map generated by QEMU](https://gitlab.com/qemu-project/keycodemapdb). Implementing scroll and drag followed similarly. 
 
 I also needed manage receiving audio streams from the SPICE playback callback, writing to a QAudioSink. One thing I found nice is how my approach supported multiple SPICE connections quite nicely. For example, opening multiple VMs will create separate audio sources for each so users can modify volume levels accordingly.
 
@@ -94,13 +96,13 @@ Later on, I added display frame resizing when the user resizes the Karton window
 
 ### UI
 
-My final major MR was to rework my UI to make better use of screen space. I moved the existing VM ListView into a sidebar displaying only name, state, and OS ID. The right side would then have the detailed information of the selected VM. One my biggest inspirations was MacOS UTM's screenshot of the last active frame.
+My final major MR was to rework my UI to make better use of screen space. I moved the existing VM ListView into a sidebar displaying only name, state, and OS ID. The right side would then have the detailed information of the selected VM. One my inspirations was MacOS UTM's screenshot of the last active frame.
 
 When a user closes the Karton viewer window, the last frame is saved to `$HOME/.local/state/KDE/Karton/previews`. Implementing cool features like these are much easier now that we have our own viewer! I also added some effects for opacity and hover animation to make it look nice.
 
 <img src="https://kenoi.dev/blogs/2025-08-23/manager.png" width="400" style="display: inline-block;" />
 
-Finally, I worked on media disc ejection. This uses a libvirt call to simulate the installation media being removed from the VM, so users can boot into their virtual hard drive after installing. 
+Finally, I worked on media disc ejection. This uses a [libvirt call](https://libvirt.org/html/libvirt-libvirt-domain.html) to simulate the installation media being removed from the VM, so users can boot into their virtual hard drive after installing. 
 
 ## Usage
 
@@ -142,38 +144,41 @@ There's still a lot left especially with regards to the viewer.
 
 Here's a bit of an unorganized list:
 * Optimize VM display frame buffer with SPICE `gl-scanout`
-* Improved scaling and text rendering
-* File transfer and clipboard through SPICE
+* Improved scaling and text rendering in viewer
+* File transfer and clipboard passthrough with SPICE
 * Full VM snapshotting through libvirt (full duplication)
 * Browse and installation tool for commonly installed ISOs through QEMU
 * Error handling in installation process
-* Configuration of existing VMs in the application
+* Configuration and allow modifying of existing VMs in the application
+* Others on the [issue tracker](https://invent.kde.org/sitter/karton/-/issues)
 
 ## Release?
 
-In its current state, Karton is not feature complete, and not ready for officially packaging and releasing. In addition to the missing features listed before, there have been a lot of new and moving parts throughout this coding period, and I'd like to have the chance to thorough test the code to prevent any major issues.
+In its current state, Karton is not feature complete, and not ready for officially packaging and releasing. In addition to the missing features listed before, there have been a lot of new and moving parts throughout this coding period, and I'd like to have the chance to thoroughly test the code to prevent any major issues.
 
-However, I do encourage you to try it out (at your own risk!) by cloning the repo. Let me know what you think and when you find any issues!
+However, I do encourage you to try it out (at your own risk!) [by cloning the repo](https://invent.kde.org/sitter/karton). Let me know what you think and when you find any issues!
 
-In other news, there are some discussions of packaging Karton as a Flatpak eventually and I will be requesting to add it to the KDE namespace in the coming months, so stay tuned!
+In other news, there are some discussions of packaging Karton as a [Flatpak](https://flatpak.org/) eventually and I will be requesting to add it to the [KDE namespace](https://apps.kde.org/) in the coming months, so stay tuned!
 
 ## Conclusion
 
 Overall, it has been an amazing experience completing GSoC under KDE and I really recommend it for anyone who is looking to contribute to open-source.
 
-Working through MRs has given me a lot of valuable and relevant industry experience going forward. A big thank you to my mentor, [Harald Sitter](), who has been reviewing and providing feedback along the way!
+Working through MRs has given me a lot of valuable and relevant industry experience going forward. A big thank you to my mentor, [Harald Sitter](https://invent.kde.org/hsitter), who has been reviewing and providing feedback along the way!
 
-As mentioned earlier, Karton still definitely has a lot to work on and I plan continuing my work after GSoC as well. If you'd like to read more about my work on the project in the future, please check out [my personal blog]()! 
+As mentioned earlier, Karton still definitely has a lot to work on and I plan continuing my work after GSoC as well. If you'd like to read more about my work on the project in the future, please check out [my personal blog](https://kenoi.dev/)! 
 
 Thanks for reading!
 
-Website: kenoi.dev
+#### Socials
 
-Mastodon: mastodon.social/@kenoi
+Website: https://kenoi.dev/
+
+Mastodon: https://mastodon.social/@kenoi
 
 GitLab: https://invent.kde.org/kenoi
 
-GitHub:
+GitHub: https://github.com/kenoi1
 
 Matrix: @kenoi:matrix.org
 
