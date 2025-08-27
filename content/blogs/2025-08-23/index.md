@@ -100,7 +100,7 @@ My final major MR was to rework my UI to make better use of screen space. I move
 
 When a user closes the Karton viewer window, the last frame is saved to `$HOME/.local/state/KDE/Karton/previews`. Implementing cool features like these are much easier now that we have our own viewer! I also added some effects for opacity and hover animation to make it look nice.
 
-<img src="https://kenoi.dev/blogs/2025-08-23/manager.png" width="400" style="display: inline-block;" />
+<img src="https://kenoi.dev/blogs/2025-08-23/manager.png" width="800" style="display: inline-block;" />
 
 Finally, I worked on media disc ejection. This uses a [libvirt call](https://libvirt.org/html/libvirt-libvirt-domain.html) to simulate the installation media being removed from the VM, so users can boot into their virtual hard drive after installing. 
 
