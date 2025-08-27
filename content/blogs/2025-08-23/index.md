@@ -80,7 +80,7 @@ You can read more about it in my [Qt SPICE client blog](https://blogs.kde.org/20
 
 <div style="text-align: center;">
     <img src="https://kenoi.dev/blogs/2025-07-04/noice.png" width="200" style="display: inline-block;" />
-    <img src="https://kenoi.dev/blogs/2025-07-04/nnice.png" width="300" style="display: inline-block;" />
+    <img src="https://kenoi.dev/blogs/2025-07-04/nnice.png" width="200" style="display: inline-block;" />
 </div>
 
 *Screenshots of my struggles getting the display to work properly.*
