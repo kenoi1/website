@@ -18,7 +18,7 @@ Hello again everyone!
 
  I'm Derek Lin also known as [kenoi](https://invent.kde.org/kenoi), a second-year Math student at the University of Waterloo.
 
-<img style="text-align: center;" src="https://kenoi.dev/blogs/2025-08-23/konqi.png" width="400" />
+<img style="display: block; margin: 0 auto;" src="https://kenoi.dev/blogs/2025-08-23/konqi.png" width="400" />
 
 Through [Google Summer of Code 2025 (GSoC)](https://summerofcode.withgoogle.com/programs/2025/projects/phUCjPUf), mentored by [Harald Sitter](https://invent.kde.org/hsitter), [Tobias Fella](https://invent.kde.org/tfella), and [Nicolas Fella](https://invent.kde.org/nicolasfella), I have been developing [Karton](https://invent.kde.org/sitter/karton), a virtual machine manager for KDE.
 
@@ -98,8 +98,6 @@ Later on, I added display frame resizing when the user resizes the Karton window
 
 My final major MR was to rework my UI to make better use of screen space. I moved the existing VM ListView into a sidebar displaying only name, state, and OS ID. The right side would then have the detailed information of the selected VM. One my inspirations was MacOS UTM's screenshot of the last active frame.
 
-<img style="text-align: center;" src="https://kenoi.dev/blogs/2025-08-23/qtd.png" width="400" style="display: inline-block;" />
-
 When a user closes the Karton viewer window, the last frame is saved to `$HOME/.local/state/KDE/Karton/previews`. Implementing cool features like these are much easier now that we have our own viewer! I also added some effects for opacity and hover animation to make it look nice.
 
 <img src="https://kenoi.dev/blogs/2025-08-23/manager.png" width="800" style="display: inline-block;" />
@@ -138,7 +136,7 @@ My biggest regret was having a study term over this period. There were times I h
 
 I was also quite new to both C++ and Qt development. Funny enough, I had been taking, and struggling on, my first course in C++ while working on Karton. I also spent a lot of time reading documentation to familiarize myself with a lot of the different APIs (libspice, libvirt, and libosinfo).
 
-<img style="text-align: center;" src="https://kenoi.dev/blogs/2025-08-23/ram.png" width="200" style="display: inline-block;" />
+<img style="display: block; margin: 0 auto;" src="https://kenoi.dev/blogs/2025-08-23/ram.png" width="400" style="display: inline-block;" />
 
 
 ## What's Next?
@@ -174,6 +172,9 @@ Working through MRs has given me a lot of valuable and relevant industry experie
 As mentioned earlier, Karton still definitely has a lot to work on and I plan continuing my work after GSoC as well. If you'd like to read more about my work on the project in the future, please check out [my personal blog](https://kenoi.dev/)! 
 
 Thanks for reading!
+
+<img style="display: block; margin: 0 auto;" src="https://kenoi.dev/blogs/2025-08-23/qtd.png" width="400" style="display: inline-block;" />
+
 
 ### Socials
 
