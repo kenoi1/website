@@ -36,7 +36,7 @@ I had first expressed interest in working on Karton in early Feburary where I ma
 
 You can read more about it in my [project introduction blog](https://blogs.kde.org/2025/05/18/gsoc-2025-project-intro-developing-karton-the-kde-virtual-machine-manager/)!
 
-<img src="https://kenoi.dev/blogs/2025-08-23/list.png" width="800" style="display: inline-block;" />
+<img src="https://kenoi.dev/blogs/2025-08-23/list.png" width="1000" style="display: inline-block;" />
 
 *A screenshot of my [rewrite](https://invent.kde.org/sitter/karton/-/merge_requests/4) in March 8, 2025.*
 
