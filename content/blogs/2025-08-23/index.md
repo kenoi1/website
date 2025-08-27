@@ -18,7 +18,7 @@ Hello again everyone!
 
  I'm Derek Lin also known as [kenoi](https://invent.kde.org/kenoi), a second-year Math student at the University of Waterloo.
 
-<img src="https://kenoi.dev/blogs/2025-08-23/konqi.png" width="400" style="display: inline-block;" />
+<img style="text-align: center;" src="https://kenoi.dev/blogs/2025-08-23/konqi.png" width="400" />
 
 Through [Google Summer of Code 2025 (GSoC)](https://summerofcode.withgoogle.com/programs/2025/projects/phUCjPUf), mentored by [Harald Sitter](https://invent.kde.org/hsitter), [Tobias Fella](https://invent.kde.org/tfella), and [Nicolas Fella](https://invent.kde.org/nicolasfella), I have been developing [Karton](https://invent.kde.org/sitter/karton), a virtual machine manager for KDE.
 
@@ -98,6 +98,8 @@ Later on, I added display frame resizing when the user resizes the Karton window
 
 My final major MR was to rework my UI to make better use of screen space. I moved the existing VM ListView into a sidebar displaying only name, state, and OS ID. The right side would then have the detailed information of the selected VM. One my inspirations was MacOS UTM's screenshot of the last active frame.
 
+<img src="https://kenoi.dev/blogs/2025-08-23/qt.png" width="400" style="display: inline-block;" />
+
 When a user closes the Karton viewer window, the last frame is saved to `$HOME/.local/state/KDE/Karton/previews`. Implementing cool features like these are much easier now that we have our own viewer! I also added some effects for opacity and hover animation to make it look nice.
 
 <img src="https://kenoi.dev/blogs/2025-08-23/manager.png" width="800" style="display: inline-block;" />
@@ -170,7 +172,7 @@ As mentioned earlier, Karton still definitely has a lot to work on and I plan co
 
 Thanks for reading!
 
-#### Socials
+### Socials
 
 Website: https://kenoi.dev/
 
