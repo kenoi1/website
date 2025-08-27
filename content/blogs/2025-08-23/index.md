@@ -138,7 +138,7 @@ My biggest regret was having a study term over this period. There were times I h
 
 I was also quite new to both C++ and Qt development. Funny enough, I had been taking, and struggling on, my first course in C++ while working on Karton. I also spent a lot of time reading documentation to familiarize myself with a lot of the different APIs (libspice, libvirt, and libosinfo).
 
-<img style="text-align: center;" src="https://kenoi.dev/blogs/2025-08-23/memory.png" width="200" style="display: inline-block;" />
+<img style="text-align: center;" src="https://kenoi.dev/blogs/2025-08-23/ram.png" width="200" style="display: inline-block;" />
 
 
 ## What's Next?
