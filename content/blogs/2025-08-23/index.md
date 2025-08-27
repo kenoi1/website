@@ -24,7 +24,7 @@ Through [Google Summer of Code 2025 (GSoC)](https://summerofcode.withgoogle.com/
 
 As the program wraps up, I thought it would be a good idea to put together what I've been able to accomplish as well as my plans going forward.
 
-<img src="https://kenoi.dev/blogs/2025-08-23/karton.png" width="400" style="display: inline-block;" />
+<img src="https://kenoi.dev/blogs/2025-08-23/karton.png" width="1000" style="display: inline-block;" />
 
 *A final look at [Karton](https://invent.kde.org/sitter/karton/) after the GSoC period.*
 
@@ -36,7 +36,7 @@ I had first expressed interest in working on Karton in early Feburary where I ma
 
 You can read more about it in my [project introduction blog](https://blogs.kde.org/2025/05/18/gsoc-2025-project-intro-developing-karton-the-kde-virtual-machine-manager/)!
 
-<img src="https://kenoi.dev/blogs/2025-08-23/list.png" width="1000" style="display: inline-block;" />
+<img src="https://kenoi.dev/blogs/2025-08-23/list.png" width="800" style="display: inline-block;" />
 
 *A screenshot of my [rewrite](https://invent.kde.org/sitter/karton/-/merge_requests/4) in March 8, 2025.*
 
