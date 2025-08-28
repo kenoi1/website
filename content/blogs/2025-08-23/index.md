@@ -44,7 +44,7 @@ You can read more about it in my [project introduction blog](https://blogs.kde.o
 
 One of my goals for the project was to develop a custom [libvirt domain XML](https://libvirt.org/formatdomain.html) generator using Qt libraries and the [libosinfo](https://libosinfo.org/) GLib API. I started [working on the feature](https://invent.kde.org/sitter/karton/-/merge_requests/8) in advance in April and was able to have it ready for review before the official GSoC coding period.
 
-I created a dialogue menu to accept a VM name, installation media, storage, allocated RAM, and CPUs. `libosinfo` will attempt to identify the file and return a OS short-ID (ex: `fedora40`, `ubuntu24.04`, etc), otherwise users will need to select one from the displayed list.
+I created a dialogue menu to accept a VM name, installation media, storage, allocated RAM, and CPUs. `libosinfo` will attempt to identify the ISO file and return a OS short-ID (ex: `fedora40`, `ubuntu24.04`, etc), otherwise users will need to select one from the displayed list.
 
 Through the OS ID, `libosinfo` can provide certain specifications needed in the libvirt domain XML. Karton then fills in the rest, generating a UUID, a MAC address to configure a [virtual network](https://libvirt.org/formatdomain.html#network-interfaces), and sets up display, audio, and storage devices. The XML file is assembled through QDomDocument and passed into a libvirt call that verifies it before adding the VM.
 
@@ -94,7 +94,7 @@ Later on, I added display frame resizing when the user resizes the Karton window
 
 {{< video src="https://kenoi.dev/blogs/2025-08-23/view.mp4" >}}
 
-*Now, we can watch [Pepper and Carrot](https://www.peppercarrot.com/) somewhat!*
+*Now, we can watch [Pepper and Carrot](https://www.peppercarrot.com/) somewhat! (no hardware accelleration yet)*
 
 ### UI
 
@@ -140,11 +140,12 @@ I was also new to both C++ and Qt development. Funny enough, I had been taking, 
 
 
 <div style="text-align: center;">
-    <img style="display: block; margin: 0 auto;" src="https://kenoi.dev/blogs/2025-08-23/ram.png" width="400" />
-    <img style="display: block; margin: 0 auto;" src="https://kenoi.dev/blogs/2025-08-23/storage.png" width="400" />
+    <img src="https://kenoi.dev/blogs/2025-08-23/ram.png" width="350" style="display: inline-block;" />
+    <img src="https://kenoi.dev/blogs/2025-08-23/storage.png" width="350" style="display: inline-block;" />
 </div>
 
 *Left: Karton freezes my computer because I had too many running VMs.*
+
 *Right: 434.1 GiB of virtual disks; my reminder to implement disk management.*
 
 ## What's Next?
@@ -173,18 +174,18 @@ In other news, there are some discussions of packaging Karton as a [Flatpak](htt
 
 ## Conclusion
 
-Overall, it has been an amazing experience completing GSoC under KDE and I really recommend it for anyone who is looking to contribute to open-source.
+Overall, it has been an amazing experience completing GSoC under KDE and I really recommend it for anyone who is looking to contribute to open-source. I'm quite satisfied with what I've been able to accomplish in this short period of time and hoping to continue to working and learning with the community.
 
 Working through MRs has given me a lot of valuable and relevant industry experience going forward. A big thank you to my mentor, [Harald Sitter](https://invent.kde.org/hsitter), who has been reviewing and providing feedback along the way!
 
-As mentioned earlier, Karton still definitely has a lot to work on and I plan continuing my work after GSoC as well. If you'd like to read more about my work on the project in the future, please check out [my personal blog](https://kenoi.dev/)! 
+As mentioned earlier, Karton still definitely has a lot to work on and I plan continuing my work after GSoC as well. If you'd like to read more about my work on the project in the future, please check out [my personal blog](https://kenoi.dev/) and the development matrix, [karton:kde.org](https://matrix.to/#/#karton:kde.org).
 
 Thanks for reading!
 
-<img src="https://kenoi.dev/blogs/2025-08-23/qtd.png" width="400" />
-
+<img src="https://kenoi.dev/blogs/2025-08-23/qtd.png" width="450" />
 
 ### Socials
+
 
 Website: https://kenoi.dev/
 
