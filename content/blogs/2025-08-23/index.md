@@ -92,7 +92,7 @@ I also needed manage receiving audio streams from the SPICE playback callback, w
 
 Later on, I added display frame resizing when the user resizes the Karton window as well as a fullscreen button. I noticed that doing so still causes resolution to appear quite bad, so proper resizing done through the guest machine will have to be implemented in the future.
 
-{{< video src="https://kenoi.dev/blogs/2025-08-023/view.mp4" >}}
+{{< video src="https://kenoi.dev/blogs/2025-08-23/view.mp4" >}}
 
 
 ### UI
@@ -109,7 +109,7 @@ Finally, I worked on media disc ejection [(see MR #26)](https://invent.kde.org/s
 
 As a final test of the project, I decided to configure, configure and use a Fedora KDE VM using Karton. After specifying specs, I installed it to the virtual disk, ejected the installation media, and properly booted into it. Then, I tried playing some games. Overall, it worked pretty well!
 
-{{< video src="https://kenoi.dev/blogs/2025-08-023/install.mp4" >}}
+{{< video src="https://kenoi.dev/blogs/2025-08-23/install.mp4" >}}
 
 ## List of MRs
 
@@ -138,7 +138,6 @@ My biggest regret was having a study term over this period. There were times I h
 I was also quite new to both C++ and Qt development. Funny enough, I had been taking, and struggling on, my first course in C++ while working on Karton. I also spent a lot of time reading documentation to familiarize myself with a lot of the different APIs (libspice, libvirt, and libosinfo).
 
 <img style="display: block; margin: 0 auto;" src="https://kenoi.dev/blogs/2025-08-23/ram.png" width="400" />
-
 
 ## What's Next?
 
