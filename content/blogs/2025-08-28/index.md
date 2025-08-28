@@ -16,13 +16,13 @@ Hello again everyone!
 
  I'm Derek Lin also known as [kenoi](https://invent.kde.org/kenoi), a second-year Math student at the University of Waterloo.
 
- <img style="display: block; margin: 0 auto;" src="https://kenoi.dev/blogs/2025-08-23/konqi.png" width="800" />
+ <img style="display: block; margin: 0 auto;" src="https://kenoi.dev/blogs/2025-08-28/konqi.png" width="800" />
 
 Through [Google Summer of Code 2025 (GSoC)](https://summerofcode.withgoogle.com/programs/2025/projects/phUCjPUf), mentored by [Harald Sitter](https://invent.kde.org/hsitter), [Tobias Fella](https://invent.kde.org/tfella), and [Nicolas Fella](https://invent.kde.org/nicolasfella), I have been developing [Karton](https://invent.kde.org/sitter/karton), a virtual machine manager for KDE.
 
 As the program wraps up, I thought it would be a good idea to put together what I've been able to accomplish as well as my plans going forward.
 
-<img src="https://kenoi.dev/blogs/2025-08-23/karton.png" width="1000" style="display: block; margin: 0 auto;" />
+<img src="https://kenoi.dev/blogs/2025-08-28/karton.png" width="1000" style="display: block; margin: 0 auto;" />
 
 *A final look at [Karton](https://invent.kde.org/sitter/karton/) after the GSoC period.*
 
@@ -30,13 +30,13 @@ As the program wraps up, I thought it would be a good idea to put together what 
 
 The main motivation behind Karton is to provide KDE users with a more Qt-native alternative to GTK-based virtual machine managers, as well as an easy-to-use experience.
 
-<img style="display: block; margin: 0 auto;" src="https://kenoi.dev/blogs/2025-08-23/karqi.png" width="700" />
+<img style="display: block; margin: 0 auto;" src="https://kenoi.dev/blogs/2025-08-28/karqi.png" width="700" />
 
 I had first expressed interest in working on Karton in early Feburary where I made the initial full rewrite ([see MR #4](https://invent.kde.org/sitter/karton/-/merge_requests/4)), using [libvirt](https://libvirt.org/) and a new UI, wrapping [virt-install](https://linux.die.net/man/1/virt-install) and [virt-viewer](https://linux.die.net/man/1/virt-viewer) CLIs. During this time, I had been doing research, writing a [proposal](https://docs.google.com/document/d/13cVp2gISwdFwQyPr8tRzERKnerJkGQpMFffLZmmd9bQ/edit?usp=sharing), and trying out different virtual machine managers like [GNOME Boxes](https://apps.gnome.org/Boxes/), [virtmanager](https://virt-manager.org/), and [UTM](https://mac.getutm.app/).
 
 You can read more about it in my [project introduction blog](https://blogs.kde.org/2025/05/18/gsoc-2025-project-intro-developing-karton-the-kde-virtual-machine-manager/)!
 
-<img src="https://kenoi.dev/blogs/2025-08-23/list.png" width="800" style="display: block; margin: 0 auto;" />
+<img src="https://kenoi.dev/blogs/2025-08-28/list.png" width="800" style="display: block; margin: 0 auto;" />
 
 *A screenshot of my [rewrite](https://invent.kde.org/sitter/karton/-/merge_requests/4) in March 8, 2025.*
 
@@ -52,7 +52,7 @@ VM information (id, name, state, paths, etc) in Karton is parsed explicitly from
 
 All in all, this addition ([see MR #8](https://invent.kde.org/sitter/karton/-/merge_requests/8)) completely removed the `virt-install` dependency although barebones.
 
- <img src="https://kenoi.dev/blogs/2025-08-23/installationdialog.png" width="800" style="display: block; margin: 0 auto;" />
+ <img src="https://kenoi.dev/blogs/2025-08-28/installationdialog.png" width="800" style="display: block; margin: 0 auto;" />
 
  *A screenshot of the VM installation dialog.*
  
@@ -66,7 +66,7 @@ A few weeks into the official coding period, I had been addressing feedback and 
 
 My use of `virt-viewer` previously for interacting with virtual machines was meant as a temporary addition, as it is a separate application and is poorly integrated into Qt/Kirigami and lacks needed customizability. 
 
- <img src="https://kenoi.dev/blogs/2025-08-23/virtviewer.png" width="800" style="display: inline-block;" />
+ <img src="https://kenoi.dev/blogs/2025-08-28/virtviewer.png" width="800" style="display: inline-block;" />
 
  *Previously, clicking the `view` button would open a `virtviewer` window.*
 
@@ -76,7 +76,7 @@ I had configured all Karton-created VMs to be set to [autoport for graphics](htt
 
 The viewer display works through a frame buffer. The approach I took was rendering the pixel array I received to a QImage which could be drawn onto a QQuickItem to be displayed on the window. To know when to update, it listens to the SPICE primary display callback.
 
-You can read more about it in my [Qt SPICE client blog](https://blogs.kde.org/2025/07/10/karton-gsoc-2025-blog-%232-qt-spice-client/). As noted, this approach is quite inefficient as it needs to create a new QImage for every frame. I plan on improving this in the future.
+You can read more about it in my [Qt SPICE client blog](https://blogs.kde.org/2025/07/10/karton-gsoc-2025-blog-%282-qt-spice-client/). As noted, this approach is quite inefficient as it needs to create a new QImage for every frame. I plan on improving this in the future.
 
 <div style="text-align: center;">
     <img src="https://kenoi.dev/blogs/2025-07-04/noice.png" width="350" style="display: inline-block;" />
@@ -92,7 +92,7 @@ I also needed manage receiving audio streams from the SPICE playback callback, w
 
 Later on, I added display frame resizing when the user resizes the Karton window as well as a fullscreen button. I noticed that doing so still causes resolution to appear quite bad, so proper resizing done through the guest machine will have to be implemented in the future.
 
-{{< video src="https://kenoi.dev/blogs/2025-08-23/view.mp4" >}}
+{{< video src="https://kenoi.dev/blogs/2025-08-28/view.mp4" >}}
 
 *Now, we can watch [Pepper and Carrot](https://www.peppercarrot.com/) somewhat! (no hardware accelleration yet)*
 
@@ -102,7 +102,7 @@ My final major MR was to rework my UI to make better use of screen space [(see M
 
 When a user closes the Karton viewer window, the last frame is saved to `$HOME/.local/state/KDE/Karton/previews`. Implementing cool features like these are much easier now that we have our own viewer! I also added some effects for opacity and hover animation to make it look nice.
 
-<img src="https://kenoi.dev/blogs/2025-08-23/manager.png" width="800" style="display: block; margin: 0 auto;" />
+<img src="https://kenoi.dev/blogs/2025-08-28/manager.png" width="800" style="display: block; margin: 0 auto;" />
 
 Finally, I worked on media disc ejection [(see MR #26)](https://invent.kde.org/sitter/karton/-/merge_requests/26). This uses a [libvirt call](https://libvirt.org/html/libvirt-libvirt-domain.html) to simulate the installation media being removed from the VM, so users can boot into their virtual hard drive after installing. 
 
@@ -110,7 +110,7 @@ Finally, I worked on media disc ejection [(see MR #26)](https://invent.kde.org/s
 
 As a final test of the project, I decided to configure, configure and use a [Fedora KDE](https://fedoraproject.org/kde/download) VM using Karton. After specifying specs, I installed it to the virtual disk, ejected the installation media, and properly booted into it. Then, I tried playing some games. Overall, it worked pretty well!
 
-{{< video src="https://kenoi.dev/blogs/2025-08-23/install.mp4" >}}
+{{< video src="https://kenoi.dev/blogs/2025-08-28/install.mp4" >}}
 
 ## List of MRs
 
@@ -129,7 +129,7 @@ As a final test of the project, I decided to configure, configure and use a [Fed
 ](https://invent.kde.org/sitter/karton/-/merge_requests/14)
 - [#17 Fix fullscreen button anchor margin](https://invent.kde.org/sitter/karton/-/merge_requests/17)
 - [#22 Extract installation dialog into a new class](https://invent.kde.org/sitter/karton/-/merge_requests/22)
-- [#23 Error notification/prevention for empty installation fields](https://invent.kde.org/sitter/karton/-/merge_requests/23)
+- [#28 Error notification/prevention for empty installation fields](https://invent.kde.org/sitter/karton/-/merge_requests/28)
 - [#24 List OS variants through searchable combo box](https://invent.kde.org/sitter/karton/-/merge_requests/24)
 
 ## Difficulties
@@ -140,8 +140,8 @@ I was also new to both C++ and Qt development. Funny enough, I had been taking, 
 
 
 <div style="text-align: center;">
-    <img src="https://kenoi.dev/blogs/2025-08-23/ram.png" width="350" style="display: inline-block;" />
-    <img src="https://kenoi.dev/blogs/2025-08-23/storage.png" width="350" style="display: inline-block;" />
+    <img src="https://kenoi.dev/blogs/2025-08-28/ram.png" width="350" style="display: inline-block;" />
+    <img src="https://kenoi.dev/blogs/2025-08-28/storage.png" width="350" style="display: inline-block;" />
 </div>
 
 *Left: Karton freezes my computer because I had too many running VMs.*
@@ -182,7 +182,7 @@ As mentioned earlier, Karton still definitely has a lot to work on and I plan co
 
 Thanks for reading!
 
-<img src="https://kenoi.dev/blogs/2025-08-23/qtd.png" width="500" />
+<img src="https://kenoi.dev/blogs/2025-08-28/qtd.png" width="500" />
 
 
 ### Socials
