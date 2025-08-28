@@ -94,6 +94,7 @@ Later on, I added display frame resizing when the user resizes the Karton window
 
 {{< video src="https://kenoi.dev/blogs/2025-08-23/view.mp4" >}}
 
+*Now, we can watch [Pepper and Carrot](https://www.peppercarrot.com/) somewhat!*
 
 ### UI
 
@@ -105,9 +106,9 @@ When a user closes the Karton viewer window, the last frame is saved to `$HOME/.
 
 Finally, I worked on media disc ejection [(see MR #26)](https://invent.kde.org/sitter/karton/-/merge_requests/26). This uses a [libvirt call](https://libvirt.org/html/libvirt-libvirt-domain.html) to simulate the installation media being removed from the VM, so users can boot into their virtual hard drive after installing. 
 
-## Usage
+## Demo Usage
 
-As a final test of the project, I decided to configure, configure and use a Fedora KDE VM using Karton. After specifying specs, I installed it to the virtual disk, ejected the installation media, and properly booted into it. Then, I tried playing some games. Overall, it worked pretty well!
+As a final test of the project, I decided to configure, configure and use a [Fedora KDE](https://fedoraproject.org/kde/download) VM using Karton. After specifying specs, I installed it to the virtual disk, ejected the installation media, and properly booted into it. Then, I tried playing some games. Overall, it worked pretty well!
 
 {{< video src="https://kenoi.dev/blogs/2025-08-23/install.mp4" >}}
 
@@ -133,11 +134,18 @@ As a final test of the project, I decided to configure, configure and use a Fedo
 
 ## Difficulties
 
-My biggest regret was having a study term over this period. There were times I had a lot of trouble managing my time, balancing studying, searching for job positions, and contributing. Though it's been an exhausting school term, I am still super glad to have been able to contribute to a really cool project and get something work!
+My biggest regret was having a study term over this period. I had to really manage my time well, balancing studying, searching for job positions, and contributing. There was a week where I had 2 midterms, 2 interviews, and a final project, and I found myself pulling some late nighters writing code at the school library. Though it's been an exhausting school term, I am still super glad to have been able to contribute to a really cool project and get something work!
 
-I was also quite new to both C++ and Qt development. Funny enough, I had been taking, and struggling on, my first course in C++ while working on Karton. I also spent a lot of time reading documentation to familiarize myself with a lot of the different APIs (libspice, libvirt, and libosinfo).
+I was also new to both C++ and Qt development. Funny enough, I had been taking, and struggling on, my first course in C++ while working on Karton. I also spent a lot of time reading documentation to familiarize myself with a lot of the different APIs (libspice, libvirt, and libosinfo).
 
-<img style="display: block; margin: 0 auto;" src="https://kenoi.dev/blogs/2025-08-23/ram.png" width="400" />
+
+<div style="text-align: center;">
+    <img style="display: block; margin: 0 auto;" src="https://kenoi.dev/blogs/2025-08-23/ram.png" width="400" />
+    <img style="display: block; margin: 0 auto;" src="https://kenoi.dev/blogs/2025-08-23/storage.png" width="400" />
+</div>
+
+*Left: Karton freezes my computer because I had too many running VMs.*
+*Right: 434.1 GiB of virtual disks; my reminder to implement disk management.*
 
 ## What's Next?
 
