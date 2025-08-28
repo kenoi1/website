@@ -1,6 +1,6 @@
 ---
-title: "DRAFT: GSoC 2025 Final Project Blog: Developing Karton, the KDE Virtual Machine Manager!"
-date: "2025-08-23"
+title: "GSoC 2025 Final Project Blog: Developing Karton, the KDE Virtual Machine Manager!"
+date: "2025-08-28"
 authors:
  - kenoi
 tags:
@@ -16,7 +16,7 @@ Hello again everyone!
 
  I'm Derek Lin also known as [kenoi](https://invent.kde.org/kenoi), a second-year Math student at the University of Waterloo.
 
-<img style="display: block; margin: 0 auto;" src="https://kenoi.dev/blogs/2025-08-23/konqi.png" width="800" />
+ <img style="display: block; margin: 0 auto;" src="https://kenoi.dev/blogs/2025-08-23/konqi.png" width="800" />
 
 Through [Google Summer of Code 2025 (GSoC)](https://summerofcode.withgoogle.com/programs/2025/projects/phUCjPUf), mentored by [Harald Sitter](https://invent.kde.org/hsitter), [Tobias Fella](https://invent.kde.org/tfella), and [Nicolas Fella](https://invent.kde.org/nicolasfella), I have been developing [Karton](https://invent.kde.org/sitter/karton), a virtual machine manager for KDE.
 
@@ -29,6 +29,8 @@ As the program wraps up, I thought it would be a good idea to put together what 
 ## Research and Initial Work
 
 The main motivation behind Karton is to provide KDE users with a more Qt-native alternative to GTK-based virtual machine managers, as well as an easy-to-use experience.
+
+<img style="display: block; margin: 0 auto;" src="https://kenoi.dev/blogs/2025-08-23/karqi.png" width="700" />
 
 I had first expressed interest in working on Karton in early Feburary where I made the initial full rewrite ([see MR #4](https://invent.kde.org/sitter/karton/-/merge_requests/4)), using [libvirt](https://libvirt.org/) and a new UI, wrapping [virt-install](https://linux.die.net/man/1/virt-install) and [virt-viewer](https://linux.die.net/man/1/virt-viewer) CLIs. During this time, I had been doing research, writing a [proposal](https://docs.google.com/document/d/13cVp2gISwdFwQyPr8tRzERKnerJkGQpMFffLZmmd9bQ/edit?usp=sharing), and trying out different virtual machine managers like [GNOME Boxes](https://apps.gnome.org/Boxes/), [virtmanager](https://virt-manager.org/), and [UTM](https://mac.getutm.app/).
 
@@ -180,7 +182,8 @@ As mentioned earlier, Karton still definitely has a lot to work on and I plan co
 
 Thanks for reading!
 
-<img src="https://kenoi.dev/blogs/2025-08-23/qtd.png" width="450" />
+<img src="https://kenoi.dev/blogs/2025-08-23/qtd.png" width="500" />
+
 
 ### Socials
 
