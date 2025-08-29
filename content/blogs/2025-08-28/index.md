@@ -4,6 +4,7 @@ date: "2025-08-28"
 authors:
  - kenoi
 tags:
+- kde
 - codes
 cover:
     image: "/karqi.png"
@@ -108,7 +109,7 @@ Finally, I worked on media disc ejection [(see MR #26)](https://invent.kde.org/s
 
 ## Demo Usage
 
-As a final test of the project, I decided to create, configure and use a [Fedora KDE](https://fedoraproject.org/kde/download) VM using Karton. After specifying specs, I installed it to the virtual disk, ejected the installation media, and properly booted into it. Then, I tried playing some games. Overall, it worked pretty well!
+As a final test of the project, I decided to create, configure and use a [Fedora KDE](https://fedoraproject.org/kde/download) VM using Karton. After setting specifications, I installed it to the virtual disk, ejected the installation media, and properly booted into it. Then, I tried playing some games. Overall, it worked pretty well!
 
 {{< video src="https://kenoi.dev/blogs/2025-08-28/install.mp4" >}}
 
