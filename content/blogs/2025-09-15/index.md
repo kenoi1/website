@@ -29,7 +29,7 @@ You can read more about it in [my SPICE client blog](https://kenoi.dev/blogs/202
 
 ## Let's Fix It!
 
-I had known about gl properties in SPICE for a while, but I kept putting it off since I really didn't want to deal with any more graphics.
+I had known about gl properties in SPICE for a while, but I kept putting it off since I really didn't want to deal with any more graphics stuff after the last attempt.
 
 Fast forward to last-last week, I was attending my first ever KDE Akademy in Berlin and all of a sudden gained some motivation. It was really exciting hearing talks about all the *kool* things happening in KDE. 
 
@@ -58,7 +58,7 @@ struct SpiceGlScanout {
     gboolean y0top;
 };
 ```
-The width, height, stride, etc..., are all parameters that can be used to set your final rendered frame, but the important field is the fd (file descriptor) which is a ["a drm DMABUF file that can be imported with eglCreateImageKHR"](https://www.spice-space.org/api/spice-gtk/SpiceDisplayChannel.html#SpiceDisplayChannel--gl-scanout). I don't know what that is;  but at least I knew I should be using the EGL library to do the processing. 
+The width, height, stride, etc..., are all parameters that can be used to set your final rendered frame, but the important field is the fd (file descriptor) which is a ["a drm DMABUF file that can be imported with eglCreateImageKHR"](https://www.spice-space.org/api/spice-gtk/SpiceDisplayChannel.html#SpiceDisplayChannel--gl-scanout). I didn't know what that was;  but at least I learned I should be using the EGL library to do the processing. 
 
 I had found some forum articles ([Qt forum](https://forum.qt.io/topic/115805/render-eglimagekhr-into-qopenglframebufferobject/2), [Arm developer forum](https://developer.arm.com/documentation/ka004859/latest/)) related to rendering OpenGL textures which used the EGL library and were quite helpful. I also looked at the SPICE GTK widget source code which gave me some ideas on the GL parameters to work with. 
 
