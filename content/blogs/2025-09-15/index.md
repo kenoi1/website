@@ -17,6 +17,9 @@ This has been something I've been planning on for quite a while now and will sig
 
 {{< video src="https://kenoi.dev/blogs/2025-09-15/compareviewr.mp4" >}}
 
+*a comparison with an old video I had.*
+
+*left: old viewer, right: new viewer*
 
 ## Old Rendering Pipeline
 
@@ -29,6 +32,8 @@ You can read more about it in [my SPICE client blog](https://kenoi.dev/blogs/202
 I had known about gl properties in SPICE for a while, but I kept putting it off since I really didn't want to deal with any more graphics.
 
 Fast forward to last-last week, I was attending my first ever KDE Akademy in Berlin and all of a sudden gained some motivation. It was really exciting hearing talks about all the *kool* things happening in KDE. 
+
+<img src="https://kenoi.dev/blogs/2025-09-15/akademy.png" style="display: inline-block;" />
 
 ### gl-draw
 
