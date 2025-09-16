@@ -1,5 +1,5 @@
 ---
-title: "Karton GSoC 2025 Blog #2: Qt SPICE Client"
+title: "Karton Virtual Machine Manager GSoC 2025 Blog #2: Qt SPICE Client"
 date: "2025-07-04"
 authors:
  - kenoi
