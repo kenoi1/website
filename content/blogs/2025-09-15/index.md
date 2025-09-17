@@ -13,7 +13,7 @@ SPDX-License-Identifier: CC-BY-SA-4.0
 SPDX-FileCopyrightText: 2025 Derek Lin <derekhongdalin@gmail.com>
 ---
 
-I was at [Akademy 2025](https://akademy.kde.org/2025/) last-last week and did the some preliminary research on optimizing the VM viewer's display rendering on Karton. After some more work this past week, it's somewhat here! I'm still finishing up [the merge request](https://invent.kde.org/sitter/karton/-/merge_requests/33), but exciting news to come!
+I was at [Akademy 2025](https://akademy.kde.org/2025/) last-last week where I did some preliminary research on optimizing the VM viewer's display rendering on Karton. After some more work this past week, it's somewhat here! I'm still finishing up [the merge request](https://invent.kde.org/sitter/karton/-/merge_requests/33), but exciting news to come!
 
 This has been something I've been planning on for quite a while now and will significantly improve the experience using Karton :) 
 
