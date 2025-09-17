@@ -4,6 +4,8 @@ date: "2025-09-15"
 authors:
  - kenoi
 tags:
+- kde
+- codes
 cover:
     image: "/karton4-1.png"
 
