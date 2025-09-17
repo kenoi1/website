@@ -15,7 +15,7 @@ I was at [Akademy 2025](https://akademy.kde.org/2025/) last-last week and did th
 
 This has been something I've been planning on for quite a while now and will significantly improve the experience using Karton :) 
 
-{{< video src="https://kenoi.dev/blogs/2025-09-15/compare.mp4" >}}
+{{< video src="https://kenoi.dev/blogs/2025-09-15/compare_n.mp4" >}}
 
 *a comparison with an old video I had.*
 
