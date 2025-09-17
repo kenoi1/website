@@ -21,8 +21,6 @@ This has been something I've been planning on for quite a while now and will sig
 
 *a comparison with an old video I had.*
 
-*left: old viewer, right: new viewer*
-
 ## Old Rendering Pipeline
 
 My original approach for rendering listened to `display-primary-create` and `invalidate-display-primary` [SPICE signals](https://www.spice-space.org/api/spice-gtk/SpiceDisplayChannel.html#SpiceDisplayChannel-display-invalidate). Everytime it received a callback, it would create a new QImage and render that to the QQuickItem (the viewer window). As you can imagine, this was very inefficient as it is basically generating new images for every single frame being rendered. It suffered a lot from screen-tearing any time there were sudden changes to the screen.
