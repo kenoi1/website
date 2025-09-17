@@ -31,15 +31,31 @@ You can read more about my experiences in [my SPICE client blog](https://kenoi.d
 
 I had known about GL properties in [SPICE](https://www.spice-space.org/) for a while now, but I kept putting it off since I really didn't want to deal with any more graphics stuff after my last attempt.
 
-Fast forward to last-last week, I was attending my first ever KDE Akademy in Berlin and all of a sudden gained some motivation. It was really exciting hearing talks about all the *kool* things happening in KDE. 
+Fast forward to last-last week, I was attending my first ever KDE Akademy in Berlin and all of a sudden gained some motivation.
 
 <img src="https://kenoi.dev/blogs/2025-09-15/akademy.png" style="display: inline-block;" />
+
+*It was really exciting hearing talks about all the *kool* things happening in KDE.*
 
 ### gl-draw
 
 My first order of business was getting the `gl-draw` signal to properly receive gl-scanouts from my SPICE connection. After setting up the callback, I found out that I had to reconfigure my VMs to properly support it.
 
-This was easy enough as I've made the Karton VM [installation classes](https://invent.kde.org/sitter/karton/-/merge_requests/8) a few months ago done through the [libvirt domain XML forma](https://libvirt.org/formatdomain.html). VMs need enabling of gl and 3D acceleration through the graphics element in the XML. The socket connection to SPICE also had to be switched from TCP to UNIX, which was set to `/tmp/spice-vm{uuid}.sock`. As a result, previous VMs configured in Karton will no longer work as the previous rendering pipeline has been removed.
+This was easy enough as I've made the Karton VM [installation classes](https://invent.kde.org/sitter/karton/-/merge_requests/8) a few months ago done through the [libvirt domain XML format](https://libvirt.org/formatdomain.html). VMs need enabling of GL and 3D acceleration through the graphics element in the XML. The socket connection to SPICE also had to be switched from TCP to UNIX, which was set to `/tmp/spice-vm{uuid}.sock`. As a result, previous VMs configured in Karton will no longer work as the previous rendering pipeline has been removed.
+
+```xml
+<graphics type="spice" socket="/tmp/spice-vm{uuid}.sock">
+    <listen type="socket" socket="/tmp/spice-vm{uuid}.sock"/>
+    <gl enable="yes"/>
+</graphics>
+<video>
+    <model type="virtio" heads="1" primary="yes">
+        <acceleration accel3d="yes"/>
+    </model>
+    <address type="pci" domain="0x0000" bus="0x00" slot="0x01" function="0x0"/>
+</video>
+```
+*An example libvirt domain XML*
 
 Once properly configured, I was able to get `SpiceGlScanout` objects from my callback linked to the `gl-draw` signal. Now, I needed to render these scanouts onto my QQuickItem canvas.
 
