@@ -29,7 +29,7 @@ You can read more about my experiences in [my SPICE client blog](https://kenoi.d
 
 ## We can do better!
 
-Rendering via OpenGL allows for GPU optimizations and can significantly improve performance. I had known about GL properties in [SPICE](https://www.spice-space.org/) for a while now, but I kept putting it off since I really didn't want to deal with any more graphics stuff after my last attempt.
+Rendering via OpenGL can offload a lot of these tasks to the GPU and can significantly improve performance. I had known about GL properties in [SPICE](https://www.spice-space.org/) for a while now, but I kept putting it off since I really didn't want to deal with any more graphics stuff after my last attempt.
 
 Fast forward to last-last week, I was attending my first ever KDE Akademy in Berlin and all of a sudden gained some motivation.
 
