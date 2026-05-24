@@ -55,6 +55,8 @@ params:
       url: "https://invent.kde.org/kenoi"
     - name: github
       url: "https://github.com/kenoi1"
+    - name: linkedin
+      url: "https://www.linkedin.com/in/d9lin/"
     - name: mastodon
       url: "https://mastodon.social/@kenoi"
     - name: youtube
