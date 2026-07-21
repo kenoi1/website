@@ -33,15 +33,17 @@ params:
     enabled: true
     title: kenoi
     subtitle: "Derek Lin <br /> math student @ UWaterloo <br /> I like music production, drawing, and KDE"
-    imageUrl: "/me.png"
+    imageUrl: "/me.jpg"
     imageWidth: 100
     imageHeight: 100
     imageTitle: "pfp"
     buttons:
       - name: blogs
         url: /blogs/
-      - name: gallery
-        url: /gallery/
+      - name: tags
+        url: /tags/
+      # - name: gallery
+        # url: /gallery/
   # homeInfoParams:
   #   Title: "kenoi"
   #   Content: > 
@@ -60,7 +62,7 @@ params:
     - name: mastodon
       url: "https://mastodon.social/@kenoi"
     - name: youtube
-      url: "https://youtube.com/@kenoibun"
+      url: "https://www.youtube.com/@dereklin6516"
     - name: discord
       url: "https://discord.com/users/256191401140682754"
 
@@ -70,10 +72,10 @@ menu:
       name: blogs
       url: /blogs/
       weight: 10
-    - identifier: gallery
-      name: gallery
-      url: /gallery/
-      weight: 20
+    # - identifier: gallery
+      # name: gallery
+      # url: /gallery/
+      # weight: 20
     - identifier: tags
       name: tags
       url: /tags/
